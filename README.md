@@ -18,13 +18,13 @@ To develop a smart, responsive, and low-cost home monitoring system that:
 
 | Component              | Specs                                     | Qty |
 |------------------------|-------------------------------------------|-----|
-| Arduino Uno            | ATmega328P, 5V, 14 Digital I/O            | 2   |
-| Flame Sensor           | 3.3–5V, IR Flame Detection                | 1   |
-| PIR Motion Sensor      | 5V, up to 7 meters range                  | 1   |
-| Servo Motors           | 5V, Torque: 1.8 kg-cm                     | 3   |
-| HC-05 Bluetooth Module | Bluetooth 2.0, 10 meters range            | 1   |
-| L298N Motor Driver     | 5–35V, 2A peak current                    | 1   |
-| Jumper Wires           | -                                         |     |
+| Arduino Uno            | ATmega328P, 5V, 14 Digital I/O            |  2  |
+| Flame Sensor           | 3.3–5V, IR Flame Detection                |  1  |
+| PIR Motion Sensor      | 5V, up to 7 meters range                  |  1  |
+| Servo Motors           | 5V, Torque: 1.8 kg-cm                     |  3  |
+| HC-05 Bluetooth Module | Bluetooth 2.0, 10 meters range            |  1  |
+| L298N Motor Driver     | 5–35V, 2A peak current                    |  1  |
+| Jumper Wires           | -                                         |  -  |
 
 ---
 

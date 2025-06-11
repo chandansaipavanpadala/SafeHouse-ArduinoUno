@@ -81,3 +81,11 @@ To develop a smart, responsive, and low-cost home monitoring system that:
 ## Conclusion
 
 Safe House is a compact, smart, and responsive home security system using affordable components. It lays the foundation for more advanced, scalable smart home solutions with real-time control and environmental safety at its core.
+---
+
+## 💡 Made by:
+**Chebrolu Rishita**
+**Chandan Sai Pavan Padala**  
+**Chivukula Vedajnaa Aparna**
+Dept. of Electronics and Communication Engineering  
+Amrita Vishwa Vidyapeetham, Bengaluru Campus

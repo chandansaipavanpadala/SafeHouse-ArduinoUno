@@ -26,6 +26,7 @@ To develop a smart, responsive, and low-cost home monitoring system that:
 | L298N Motor Driver     | 5–35V, 2A peak current                    |  1  |
 | Jumper Wires           | -                                         |  -  |
 
+![20240427_180752](https://github.com/user-attachments/assets/797542a7-064c-4161-bf99-a50d26c422d0)
 ---
 
 ## System Design

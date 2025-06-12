@@ -86,11 +86,9 @@ Safe House is a compact, smart, and responsive home security system using afford
 ---
 
 ## Authors
-**Chebrolu Rishita**  
-
-**Chandan Sai Pavan Padala**
-
-**Chivukula Vedajnaa Aparna**
+- Chebrolu Rishita
+- Chandan Sai Pavan Padala
+- Chivukula Vedajnaa Aparna
 
 Dept. of Electronics and Communication Engineering  
 Amrita Vishwa Vidyapeetham, Bengaluru Campus

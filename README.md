@@ -1,94 +1,81 @@
 # Safe House – IoT-Based Home Security and Fire Monitoring System
 
-Safe House is an Arduino-based IoT project designed to enhance home security and fire safety. It uses sensors to detect motion and flames and responds by controlling doors, windows, and an extinguisher through servo motors. The system is controlled remotely using a custom-built MIT App Inventor mobile app via Bluetooth.
+> An intelligent, responsive, and cost-effective home automation system designed to enhance residential security and fire safety through automated hazard detection and remote control.
 
 ---
 
-## Objective
+## Overview
 
-To develop a smart, responsive, and low-cost home monitoring system that:
-- Detects unauthorized motion
-- Identifies fire hazards early
-- Controls doors, windows, fans, and extinguishers automatically
-- Allows remote control via Bluetooth using a mobile app
+Safe House is an Arduino-based Internet of Things (IoT) project engineered to provide real-time home monitoring. Utilizing a specialized dual-sensor network, the system proactively detects unauthorized intrusions and fire hazards. Upon detection, it autonomously triggers safety protocols—such as opening doors and windows or deploying an extinguisher via servo motors. Additionally, the system features seamless wireless control through a custom-built mobile application communicating over Bluetooth, enabling users to monitor and manage their home environment remotely.
 
----
+## Key Features
 
-## Components Used
+- **Automated Hazard Response:** Dual-sensor network (PIR for motion, IR for flame) triggers immediate mechanical actions to mitigate emergencies.
+- **Wireless Mobile Control:** Custom Android application built with MIT App Inventor for secure, real-time system management.
+- **Real-Time Telemetry:** Instant feedback on environmental status ("Motion Detected", "Fire Detected") transmitted via Bluetooth.
+- **Safety Automation:** Servo-driven mechanical systems automatically open emergency exits and activate countermeasures in crisis scenarios.
 
-| Component              | Specs                                     | Qty |
-|------------------------|-------------------------------------------|-----|
-| Arduino Uno            | ATmega328P, 5V, 14 Digital I/O            |  2  |
-| Flame Sensor           | 3.3–5V, IR Flame Detection                |  1  |
-| PIR Motion Sensor      | 5V, up to 7 meters range                  |  1  |
-| Servo Motors           | 5V, Torque: 1.8 kg-cm                     |  3  |
-| HC-05 Bluetooth Module | Bluetooth 2.0, 10 meters range            |  1  |
-| L298N Motor Driver     | 5–35V, 2A peak current                    |  1  |
-| Jumper Wires           | -                                         |  -  |
+## Hardware Architecture
 
-![20240427_180752](https://github.com/user-attachments/assets/ed0ab535-5fbd-4fd5-82ec-f913b5754c27)
+The core of the system relies on an optimized interplay of microcontrollers, sensors, and actuators.
 
----
+| Component | Specifications | Quantity | Purpose |
+|---|---|:---:|---|
+| **Arduino Uno** | ATmega328P, 5V, 14 Digital I/O | 2 | Primary microcontrollers for sensor processing and motor control. |
+| **Flame Sensor** | 3.3–5V, IR Flame Detection | 1 | Detects fire outbreaks for immediate response. |
+| **PIR Sensor** | 5V, up to 7 meters range | 1 | Detects unauthorized motion within the premises. |
+| **Servo Motors** | 5V, Torque: 1.8 kg-cm | 3 | Actuates doors, windows, and fire extinguisher mechanisms. |
+| **HC-05 Module** | Bluetooth 2.0, 10 meters range | 1 | Facilitates wireless communication with the mobile app. |
+| **L298N Driver** | 5–35V, 2A peak current | 1 | Controls high-power actuator movement. |
 
-## System Design
+![System Prototype](https://github.com/user-attachments/assets/ed0ab535-5fbd-4fd5-82ec-f913b5754c27)
 
-- **Flame detected** → window, door, extinguisher open automatically.
-- **Motion detected** → door opens for entry.
-- Bluetooth connection via HC-05 enables mobile app control.
-- Commands like “open door” or “activate fan” are sent from the app and received by Arduino.
-- App shows real-time updates like “Motion detected” or “Fire detected.”
+## Software Architecture & Mobile Interface
 
----
+A custom-built Android application serves as the primary user interface, ensuring secure and intuitive control over the Safe House system.
 
-## Mobile App (MIT App Inventor)
+- **Secure Access:** Built-in authentication mechanism for restricted entry.
+- **Live Command Dashboard:** Manually override or control actuators (doors, windows, fans).
+- **Real-Time Data Feed:** Live sensor metrics and emergency alerts pushed directly to the dashboard.
+- **Bluetooth Management:** Integrated scanning, pairing, and connection management for the HC-05 module.
 
-- Login screen for secure access.
-- Real-time control panel to:
-  - Open/close doors & windows
-  - Activate fan or extinguisher
-- Displays sensor data in real time.
-- Bluetooth scanning and connection control.
+## System Workflow
 
----
+1. **Environmental Monitoring:** Sensors continuously scan the environment. 
+2. **Crisis Detection:**
+   - *Fire Scenario:* The flame sensor triggers the system to open windows for ventilation, unlock the emergency door, and deploy the extinguisher mechanism.
+   - *Intrusion Scenario:* The PIR sensor detects motion, triggering the main door to lock/unlock depending on the security mode, and sending an alert to the mobile app.
+3. **Remote Override:** The user sends explicit commands (e.g., "Open Door") from the app, which are parsed by the Arduino to drive the respective servos.
 
-## Features
+## Challenges & Technical Resolutions
 
-- Dual-sensor based trigger system (Flame + PIR).
-- Fully wireless control using MIT App.
-- Real-time feedback via Bluetooth communication.
-- Safety automation with servo-based mechanical movement.
+During the development lifecycle, several hardware constraints were addressed:
 
----
-
-## Problems Faced & Solutions
-
-| Problem | Solution |
-|--------|----------|
-| Arduino underpowered with multiple motors | Added 9V external battery |
-| Incorrect sensor voltage damaged Arduino | Replaced Arduino and corrected power |
-| Motors not responding together | Used separate power sources |
-| Bluetooth connection issues | Resolved with proper configuration via tutorials |
-
----
+| Challenge | Technical Resolution |
+|---|---|
+| **Power Constraints:** Arduino rebooting under heavy motor load. | Decoupled the logic and actuator power supplies; integrated an external 9V source specifically for the servo array. |
+| **Voltage Mismatches:** Component damage due to incorrect logic levels. | Standardized operating voltages and replaced compromised microcontrollers; implemented proper voltage division. |
+| **Actuator Synchronization:** Servos stalling when activated concurrently. | Restructured the power distribution network to provide parallel current paths from a dedicated power source. |
+| **Telemetry Latency:** Unstable Bluetooth pairing and packet drops. | Reconfigured HC-05 baud rates and optimized the serial communication protocol to ensure reliable packet delivery. |
 
 ## Future Scope
 
-- Upgrade to Wi-Fi/cloud for long-range access.
-- Add voice control and facial recognition.
-- Integrate real-time data logging & analytics.
-- Enhance UI/UX with mobile/web dashboards.
-
----
+- **IoT Cloud Integration:** Transition from Bluetooth to Wi-Fi (e.g., ESP32/ESP8266) for global accessibility and cloud data logging.
+- **Advanced Machine Learning:** Implement facial recognition for authorized access and anomaly detection.
+- **Comprehensive Dashboards:** Develop full-scale web and mobile dashboards with historical data analytics.
+- **Voice Capabilities:** Integration with smart home ecosystems such as Amazon Alexa or Google Home.
 
 ## Conclusion
 
-Safe House is a compact, smart, and responsive home security system using affordable components. It lays the foundation for more advanced, scalable smart home solutions with real-time control and environmental safety at its core.
+Safe House demonstrates a compact, smart, and responsive home security system using affordable components. It lays a strong technical foundation for more advanced, scalable smart home solutions with real-time remote control and environmental safety at its core.
+
 ---
 
 ## Authors
-- Chandan Sai Pavan Padala
-- Chivukula Vedajnaa Aparna
-- Chebrolu Rishita
 
-Dept. of Electronics and Communication Engineering  
-Amrita Vishwa Vidyapeetham, Bengaluru Campus
+- **Chandan Sai Pavan Padala**
+- **Chivukula Vedajnaa Aparna**
+- **Chebrolu Rishita**
+
+**Department of Electronics and Communication Engineering**  
+*Amrita Vishwa Vidyapeetham, Bengaluru Campus*
